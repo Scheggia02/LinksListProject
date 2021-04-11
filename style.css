@@ -1,0 +1,24 @@
+#link-title
+{
+    font-size: 2vh;
+    font-family: Verdana;
+    color: rebeccapurple;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+ul li
+{
+    margin: 10px 0;
+}
+
+ol li
+{
+    font-size: 2vh;
+    font-family: Verdana;
+    text-decoration: underline;
+    color: brown;
+}
