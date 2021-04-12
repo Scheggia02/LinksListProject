@@ -1,16 +1,14 @@
 const init = function() {
-    $("#form-submit-button").on("click", function() 
+    $("form").submit(function(event) 
     {
-        var urlText = document.getElementById("url-input").value;
-        var titleText = document.getElementById("title-input").value;
+        event.preventDefault();
+        var urlText = $("#url-input").val();
+        var titleText = $("#title-input").val();
         if(urlText == null || titleText == null) return;
 
-        var listItem = document.createElement("li");
-        var itemContent = document.createElement("a");
-        itemContent.href = urlText;
-        itemContent.innerText = titleText;
-        listItem.appendChild(itemContent);
-        document.getElementById("links-list").appendChild(listItem);
+        const listItem = $("<a>").attr("href",  urlText).text(titleText);
+        const itemContent = $("<li>").append(listItem);
+        $("#links-list").append(itemContent);
     });
 }
 
