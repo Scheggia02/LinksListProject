@@ -1,5 +1,20 @@
 const sitesList = [];
 
+const addSiteElement = function(site)
+{
+    sitesList.push(site);
+
+    //Clear the list
+    $("#links-list").empty();
+
+    //Rewrite all the elements
+    sitesList.forEach(element => {
+        const listItem = $("<a>").attr("href",  element.url).text(element.title);
+        const itemContent = $("<li>").append(listItem);
+        $("#links-list").append(itemContent);
+    });
+}
+
 const init = function() {
     $("form").submit(function(event) 
     {
@@ -9,15 +24,11 @@ const init = function() {
         var categoryText = $("#category-input").val();
         if(urlText == null || titleText == null) return;
 
-        sitesList.push({
+        addSiteElement({
             url: urlText,
             title: titleText,
             category: categoryText
-        });
-
-        const listItem = $("<a>").attr("href",  urlText).text(titleText);
-        const itemContent = $("<li>").append(listItem);
-        $("#links-list").append(itemContent);
+        });    
     });
 }
 
