@@ -9,13 +9,11 @@ const init = function() {
         var categoryText = $("#category-input").val();
         if(urlText == null || titleText == null) return;
 
-        const siteObject = {
+        sitesList.push({
             url: urlText,
             title: titleText,
             category: categoryText
-        }
-
-        sitesList.push(siteObject);
+        });
 
         const listItem = $("<a>").attr("href",  urlText).text(titleText);
         const itemContent = $("<li>").append(listItem);
