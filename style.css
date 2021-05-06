@@ -1,24 +1,65 @@
-#link-title
+body
 {
-    font-size: 2vh;
+    padding-left: 1%;
+}
+
+input, select {
+    display: block;
+    margin-top: 12px;
+}
+
+.action-icon {
+    height: 1em;
+    float: right;
+}
+
+.action-container .action-icon {
+    visibility: hidden;
+}
+
+.action-container:hover .action-icon {
+    visibility: visible;
+}
+
+#site-list {
+    margin-top: 10%;
+    width: 40%;
+}
+
+.action-container {
+    height: 1em;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+a{
+    z-index: 1;
+}
+
+li {
+    position: relative;
+}
+
+#main-title {
     font-family: Verdana;
-    color: rebeccapurple;
+    font-size: 5vh;
+    color: black;
+    text-transform: uppercase;
 }
 
-ul
+.inline-container
 {
-    list-style-type: none;
+    margin-top: 2%;
 }
 
-ul li
-{
-    margin: 10px 0;
+.inline-container input, .inline-container select{
+    float:left;
 }
 
-ol li
-{
-    font-size: 2vh;
-    font-family: Verdana;
-    text-decoration: underline;
-    color: brown;
+.inline-container input{
+    float:left;
+    margin-left: 2%;
 }
