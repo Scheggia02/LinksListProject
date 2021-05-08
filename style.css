@@ -1,11 +1,49 @@
-body
-{
-    padding-left: 1%;
+body {
+    margin-left: 2%;
+    /* min-height: 10vh;
+    display: grid;
+    align-items: center; */
 }
 
 input, select {
     display: block;
+    border: none;
     margin-top: 12px;
+    background: hsl(0, 0%, 93%);
+    border-radius: .25rem;
+    padding: .75rem 1rem
+}
+
+input[type="submit"] {
+    background: lightseagreen;
+    margin-top: 12px;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+input[type="submit"]:hover {
+    color: #000000;
+    background-color: rgb(36, 196, 188);
+    border: 0.1em solid #8b8b8b;
+    box-shadow: 0 .75rem .5rem -.5rem hsl(0, 50%, 80%);
+}
+
+input[type="submit"]:active {
+    color: #BBBBBB;
+    border-color: #BBBBBB;
+}
+
+@media all and (max-width:30em) {
+    input[type="submit"] {
+        display: block;
+        margin: 0.4em auto;
+    }
 }
 
 .action-icon {
@@ -22,8 +60,8 @@ input, select {
 }
 
 #site-list {
-    margin-top: 10%;
-    width: 40%;
+    margin-top: 15%;
+    width: 30%;
 }
 
 .action-container {
@@ -32,15 +70,10 @@ input, select {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
 }
 
-a{
-    z-index: 1;
-}
-
-li {
-    position: relative;
+#site-list li {
+    position: absolute;
 }
 
 #main-title {
@@ -50,16 +83,15 @@ li {
     text-transform: uppercase;
 }
 
-.inline-container
-{
-    margin-top: 2%;
+.inline-container {
+    margin-top: 1%;
 }
 
-.inline-container input, .inline-container select{
-    float:left;
+.inline-container input, .inline-container select {
+    float: left;
 }
 
-.inline-container input{
-    float:left;
+.inline-container input {
+    float: left;
     margin-left: 2%;
 }
