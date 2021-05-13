@@ -51,16 +51,15 @@ input[type="submit"]:active {
     float: right;
 }
 
-.action-container .action-icon {
+.action-icon {
     visibility: hidden;
 }
 
-.action-container:hover .action-icon {
+li:hover .action-icon {
     visibility: visible;
 }
 
 #site-list {
-    margin-top: 15%;
     width: 30%;
 }
 
@@ -68,12 +67,10 @@ input[type="submit"]:active {
     height: 1em;
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
 }
 
 #site-list li {
-    position: absolute;
+    position: relative;
 }
 
 #main-title {

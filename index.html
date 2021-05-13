@@ -10,7 +10,7 @@
 
 <body>
     <h1 id="main-title">I miei siti preferiti</h1>
-    <form action="">
+    <form action="" id="add-site-form">
         <input type="url" name="url" id="form-url" placeholder="URL" required>
         <input type="text" name="title" id="form-title" placeholder="titolo" required>
         <select id="form-category" name="form-category">
@@ -22,15 +22,15 @@
         <input type="submit" value="Aggiungi" id="form-submit">
     </form>
 
-    <div class="inline-container">
+    <form id="filter-form">
         <select id="filter-category" name="filter-category">
             <option value="categoria">Categoria</option>
             <option value="scuola">Scuola</option>
             <option value="gioco">Gioco</option>
             <option value="ricette">Ricette</option>
         </select>
-        <input type="button" id="button-filter" name="filter" value="Filter" >
-    </div>
+        <input type="submit" id="button-filter" name="filter" value="Filter" >
+    </form>
 
     <ol id="site-list">
     </ol>
