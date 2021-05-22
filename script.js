@@ -1,22 +1,5 @@
 let sites = [];
-let categories = [
-  {
-    "value": "categoria",
-    "text": "Categoria"
-  },
-  {
-    "value": "scuola",
-    "text": "Scuola"
-  },
-  {
-    "value": "gioco",
-    "text": "Gioco"
-  },
-  {
-    "value": "ricette",
-    "text": "Ricette"
-  }
-];
+let categories = [];
 
 let sitesListElement;
 let addSiteSelectElement;
@@ -91,6 +74,24 @@ const initCategorySelect = function (elements, categs) {
   )
 }
 
+const onFail = function (status) {
+  console.log("Errore!!!!");
+  console.log(status);
+}
+
+const populateCategories = function (jsonData) {
+  console.log(jsonData);
+  categories = jsonData;
+  initCategorySelect(addSiteSelectElement, categories);
+  initCategorySelect(filterSiteSelectElement, categories);
+}
+
+const populateDefaultSites = function (jsonData) {
+  console.log(jsonData);
+  sites = jsonData;
+  writeSiteList(sitesListElement, sites);
+}
+
 let init = function () {
   sitesListElement =  $("#site-list");
   sitesListElement.on("click", ".action-icon", deleteSite);
@@ -98,11 +99,13 @@ let init = function () {
   addSiteFormElement.submit(addNewSite);
   filterSiteFormElement = $("#filter-form");
   filterSiteFormElement.submit(filterSites);
-
   addSiteSelectElement = $("#form-category");
   filterSiteSelectElement = $("#filter-category");
   initCategorySelect(addSiteSelectElement, categories);
   initCategorySelect(filterSiteSelectElement, categories);
+
+  $.getJSON("categories.json").done(populateCategories).fail(onFail);
+  $.getJSON("defaultSites.json").done(populateDefaultSites).fail(onFail);
 }
 
 $(document).ready(init);
