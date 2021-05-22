@@ -1,4 +1,28 @@
 let sites = [];
+let categories = [
+  {
+    "value": "categoria",
+    "text": "Categoria"
+  },
+  {
+    "value": "scuola",
+    "text": "Scuola"
+  },
+  {
+    "value": "gioco",
+    "text": "Gioco"
+  },
+  {
+    "value": "ricette",
+    "text": "Ricette"
+  }
+];
+
+let sitesListElement;
+let addSiteSelectElement;
+let filterSiteSelectElement;
+let addSiteFormElement;
+let filterSiteFormElement;
 
 const site2li = (site) => {
   const aElem = $("<a>").attr("href", site.url).text(site.title);
@@ -11,7 +35,6 @@ const site2li = (site) => {
   const liElem = $("<li>")
     .append(aElem)
     .append(trashElem);
-  console.log("trashElem id: " + trashElem.data("id"));
 
   return liElem;
 }
@@ -31,13 +54,6 @@ const addNewSite = function (event) {
   const title = $("#form-title").val();
   const category = $("#form-category").val();
   
-  if(category == "categoria")
-  {
-    alert("Please insert a valid category to add a new site");
-    return
-  }
-  
-  console.log("inside addNewSite");
   const newSite = {
     id: generateId(),
     url: url,
@@ -45,29 +61,17 @@ const addNewSite = function (event) {
     category: category
   };
 
-  console.log("new site with ID: " + newSite.id)
-
   sites.push(newSite); // fino a qui OK
 
-  writeSiteList($("#site-list"), sites);
+  writeSiteList(sitesListElement, sites);
   resetSiteForms($("form"));
 }
 
 const deleteSite = function () {
     const id = $(this).data("id");
-    console.log('site id: ' + id);
-    var sitesList = $("#site-list");
-    
     // Tengo tutti gli elementi tranne quello con questo id
     sites = sites.filter(function(site) { return site["id"] != id;})
-
-    deleteSites(sitesList);
     filterSites();
-  // aggiorno la lista visualizzata a schermo
-}
-
-const deleteSites = function (siteElementsList) {
-  siteElementsList.empty();
 }
 
 const resetSiteForms = function (form) {
@@ -76,19 +80,29 @@ const resetSiteForms = function (form) {
 
 const filterSites = function () {
   event.preventDefault();
-  var category = $("#filter-category").val();
-  var sitesList = $("#site-list");
-  deleteSites(sitesList);
-  writeSiteList(sitesList, category == "categoria" ? sites : sites.filter(function (site) { return site.category == category; }));
-  console.log("filtering sites, category: " + category);
+  var category = filterSiteSelectElement.val();
+  writeSiteList(sitesListElement, category == "categoria" ? sites : sites.filter((site) => site.category == category));
+}
+
+const initCategorySelect = function (elements, categs) {
+  categs.reduce(
+    (elem, cat) => elem.append($("<option>").attr("value", cat.value).text(cat.text)),
+    elements
+  )
 }
 
 let init = function () {
-  console.log("inside init");
-  $("#add-site-form").submit(addNewSite);
-  $("#filter-form").submit(filterSites);
-  $("#site-list").on("click", ".action-icon", deleteSite);
-  console.log();
+  sitesListElement =  $("#site-list");
+  sitesListElement.on("click", ".action-icon", deleteSite);
+  addSiteFormElement = $("#add-site-form");
+  addSiteFormElement.submit(addNewSite);
+  filterSiteFormElement = $("#filter-form");
+  filterSiteFormElement.submit(filterSites);
+
+  addSiteSelectElement = $("#form-category");
+  filterSiteSelectElement = $("#filter-category");
+  initCategorySelect(addSiteSelectElement, categories);
+  initCategorySelect(filterSiteSelectElement, categories);
 }
 
 $(document).ready(init);

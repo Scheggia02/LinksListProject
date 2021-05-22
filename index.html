@@ -13,28 +13,17 @@
     <form action="" id="add-site-form">
         <input type="url" name="url" id="form-url" placeholder="URL" required>
         <input type="text" name="title" id="form-title" placeholder="titolo" required>
-        <select id="form-category" name="form-category">
-            <option value="categoria">Categoria</option>
-            <option value="scuola">Scuola</option>
-            <option value="gioco">Gioco</option>
-            <option value="ricette">Ricette</option>
-        </select>
+        <select id="form-category" name="form-category"></select>
         <input type="submit" value="Aggiungi" id="form-submit">
     </form>
 
     <form id="filter-form">
-        <select id="filter-category" name="filter-category">
-            <option value="categoria">Categoria</option>
-            <option value="scuola">Scuola</option>
-            <option value="gioco">Gioco</option>
-            <option value="ricette">Ricette</option>
-        </select>
+        <select id="filter-category" name="filter-category"></select>
         <input type="submit" id="button-filter" name="filter" value="Filter" >
     </form>
 
     <ol id="site-list">
     </ol>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
